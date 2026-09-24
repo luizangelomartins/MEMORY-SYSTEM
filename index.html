@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b10">
+  <title>MEMORY-SYSTEM</title>
+  <link rel="icon" href="icones/memory-system.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="brand-icon-img" src="icones/memory-system.ico" alt="">
+        <div>
+          <b>MEMORY-SYSTEM</b>
+          <small>Somente leitura</small>
+        </div>
+      </div>
+      <nav>
+        <button class="menu-item active" data-section="registros" type="button">R <span>Registros</span></button>
+        <button class="menu-item" data-section="categorias" type="button">C <span>Categorias</span></button>
+        <button class="menu-item" data-section="imagens" type="button">I <span>Imagens</span></button>
+        <button class="menu-item" data-section="imagensUsuarios" type="button">P <span>Fotos usuarios</span></button>
+      </nav>
+      <div class="sidebar-footer"><span class="online"></span>Modo estatico</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="paginaTitulo">Registros</h1>
+          <p id="paginaDescricao">Selecione uma categoria para consultar os registros.</p>
+        </div>
+        <div class="usuario-logado">
+          <div id="avatarLeitura" class="avatar">M</div>
+          <div>
+            <b>Leitura</b>
+            <small>Sem API</small>
+          </div>
+        </div>
+      </header>
+
+      <section id="sectionRegistros" class="content-section">
+        <div class="toolbar">
+          <div class="search-box">B <input id="campoBusca" placeholder="Pesquisar registros..."></div>
+          <select id="filtroCategoria"><option value="">Selecione uma categoria</option></select>
+          <button id="btnAtualizar" class="btn secondary" type="button">Atualizar</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><i class="blue">R</i><div><small>Total</small><b id="totalRegistros">0</b></div></div>
+          <div class="stat-card"><i class="purple">C</i><div><small>Categorias</small><b id="totalCategorias">0</b></div></div>
+          <div class="stat-card"><i class="green">I</i><div><small>Com imagem</small><b id="totalComImagem">0</b></div></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Registros</h2>
+              <small id="contadorRegistros">0 registros</small>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Imagem</th>
+                  <th>Titulo</th>
+                  <th>Categoria</th>
+                  <th>Observacao</th>
+                  <th>Dado</th>
+                  <th>Acoes</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaRegistros"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="sectionCategorias" class="content-section hidden">
+        <div class="section-actions">
+          <div>
+            <h2>Categorias</h2>
+            <p>Lista das categorias publicadas.</p>
+          </div>
+        </div>
+        <div id="listaCategorias" class="category-grid"></div>
+      </section>
+
+      <section id="sectionImagens" class="content-section hidden">
+        <div class="section-actions">
+          <div>
+            <h2>Imagens</h2>
+            <p>Arquivos Base64 publicados junto ao pacote estatico.</p>
+          </div>
+        </div>
+        <div id="listaImagens" class="image-grid"></div>
+      </section>
+
+      <section id="sectionImagensUsuarios" class="content-section hidden">
+        <div class="section-actions">
+          <div>
+            <h2>Fotos usuarios</h2>
+            <p>Arquivos Base64 da pasta imagens_usuarios.</p>
+          </div>
+        </div>
+        <div id="listaImagensUsuarios" class="image-grid"></div>
+      </section>
+
+      <footer class="app-footer">
+        <span>MEMORY-SYSTEM</span>
+        <span>Versao estatica de leitura</span>
+      </footer>
+    </main>
+  </div>
+
+  <div id="modalVisualizarRegistro" class="modal hidden">
+    <div class="modal-card large">
+      <div class="modal-header">
+        <div>
+          <span class="modal-kicker">VISUALIZAR</span>
+          <h2 id="visualTitulo">Registro</h2>
+        </div>
+        <button class="modal-close" id="btnFecharVisualizacao" type="button">x</button>
+      </div>
+      <div class="modal-body">
+        <div id="visualImagem" class="detail-image hidden"></div>
+        <div class="detail-grid">
+          <div><small>Categoria</small><b id="visualCategoria"></b></div>
+          <div><small>Observacao</small><b id="visualObservacao"></b></div>
+        </div>
+        <div class="detail-block">
+          <small>Dado</small>
+          <pre id="visualDado"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCopiarDaVisualizacao" class="btn secondary" type="button">Copiar texto</button>
+        <button id="btnCancelarVisualizacao" class="btn primary" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalImagem" class="modal hidden">
+    <div class="modal-card image-modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="modal-kicker">IMAGEM</span>
+          <h2 id="tituloModalImagem">Visualizar imagem</h2>
+        </div>
+        <button class="modal-close" id="btnFecharModalImagem" type="button">x</button>
+      </div>
+      <div class="modal-body">
+        <div id="imagemModalPreview" class="image-modal-preview"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCancelarImagem" class="btn primary" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
