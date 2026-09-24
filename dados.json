@@ -16,53 +16,53 @@
       "id": 1,
       "usuario": "night",
       "senha": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
-      "imagemArquivo": "DEF1.txt",
-      "nivel": "admin"
+      "nivel": "admin",
+      "imagemArquivo": "DEF1.txt"
     },
     {
       "id": 1790186167683,
       "usuario": "teste",
       "senha": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-      "imagemArquivo": "",
-      "nivel": "admin"
+      "nivel": "admin",
+      "imagemArquivo": ""
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1790190000000,
+      "nome": "SQLSERVER",
+      "imagemArquivo": ""
+    },
+    {
+      "id": 1790185435893,
+      "nome": "teste",
+      "imagemArquivo": "login_imagem.txt"
     }
   ],
   "registros": [
     {
-      "id": 1790185471980,
-      "categoriaId": "1790185435893",
-      "titulo": "safsafasdfasfsdf",
-      "observacao": "sdfsfsdf",
-      "dado": "sd123fs23df321",
-      "imagemArquivo": "login_imagem.txt"
+      "id": 1790268802863,
+      "categoriaId": 1790190000000,
+      "titulo": "teste-sql",
+      "observacao": "",
+      "dado": "SELECT COUNT(Id) FROM Usuarios",
+      "imagemArquivo": ""
     },
     {
       "id": 1790257310717,
-      "categoriaId": "1790190000000",
+      "categoriaId": 1790190000000,
       "titulo": "teste-sql",
       "observacao": "",
       "dado": "--SELEÇÃO DE COLUNAS DE UMA TABELA\n--EXIBE TIPO\n--SQLSERVER\n--20260924\n\nSELECT \n\tT.name AS TABELA, C.name AS COLUNA, TY.name AS TIPO\n\tFROM sys.tables AS T\n\tJOIN sys.columns AS C\n\tON C.object_id = T.object_id\n\tJOIN sys.types AS TY\n\tON C.user_type_id = TY.user_type_id\n\tWHERE T.name = 'ContratoHistoricos' AND C.name LIKE '%depart%'\n\n/*\nSELECT \n\tT.name AS TABELA, C.name AS COLUNA, TY.name AS TIPO\n\tFROM sys.tables AS T\n\tJOIN sys.columns AS C\n\tON C.object_id = T.object_id\n\tJOIN sys.types AS TY\n\tON C.user_type_id = TY.user_type_id\n\tWHERE T.name = 'ContratoDepartamento'\n\t*/\n\nSELECT * FROM Departamentos",
       "imagemArquivo": ""
     },
     {
-      "id": 1790268802863,
-      "categoriaId": "1790190000000",
-      "titulo": "teste-sql",
-      "observacao": "",
-      "dado": "SELECT COUNT(Id) FROM Usuarios",
-      "imagemArquivo": ""
-    }
-  ],
-  "categorias": [
-    {
-      "id": 1790185435893,
-      "nome": "teste",
+      "id": 1790185471980,
+      "categoriaId": 1790185435893,
+      "titulo": "safsafasdfasfsdf",
+      "observacao": "sdfsfsdf",
+      "dado": "sd123fs23df321",
       "imagemArquivo": "login_imagem.txt"
-    },
-    {
-      "id": 1790190000000,
-      "nome": "SQLSERVER",
-      "imagemArquivo": ""
     }
   ]
 }
